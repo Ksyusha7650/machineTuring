@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
+using MoreLinq;
 
 namespace machineTuring
 {
@@ -18,7 +19,7 @@ namespace machineTuring
         public ChooseOperators(CellStrip cell)
         {
             InitializeComponent();
-            avaibleOperators = MachineTuring.cellsTable;
+            avaibleOperators = MachineTuring.cellsTable.DistinctBy(i => i.row).ToList();
             if (avaibleOperators.Count == 0)
             {
                 return;
@@ -28,7 +29,7 @@ namespace machineTuring
                 currentCell = cell;
                 
                 Int32 index = 0;
-
+               
                 foreach (Cell c in avaibleOperators)
                 {
                     DataGridViewButtonColumn column = new DataGridViewButtonColumn();

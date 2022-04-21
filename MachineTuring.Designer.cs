@@ -54,9 +54,14 @@
             this.Q5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.лентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadStr = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,11 +73,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.beginAlgorithm = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.сохранитьПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadStr = new System.Windows.Forms.ToolStripMenuItem();
+            this.onSteps = new System.Windows.Forms.Button();
+            this.currIndexT = new System.Windows.Forms.Label();
+            this.currIndexLabel = new System.Windows.Forms.Label();
             this.contextMenuStripTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.strip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableAlgorithms)).BeginInit();
@@ -207,6 +210,7 @@
             this.alphabet.Name = "alphabet";
             this.alphabet.Size = new System.Drawing.Size(1219, 26);
             this.alphabet.TabIndex = 1;
+            this.alphabet.Text = "_";
             this.alphabet.TextChanged += new System.EventHandler(this.alphabet_TextChanged);
             // 
             // label1
@@ -222,6 +226,8 @@
             // 
             // tableAlgorithms
             // 
+            this.tableAlgorithms.AllowUserToAddRows = false;
+            this.tableAlgorithms.AllowUserToDeleteRows = false;
             this.tableAlgorithms.AllowUserToResizeColumns = false;
             this.tableAlgorithms.AllowUserToResizeRows = false;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -334,7 +340,7 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1331, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(1331, 30);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -346,8 +352,22 @@
             this.файлToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.файлToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(62, 25);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(62, 26);
             this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьПрограммуToolStripMenuItem
+            // 
+            this.сохранитьПрограммуToolStripMenuItem.Name = "сохранитьПрограммуToolStripMenuItem";
+            this.сохранитьПрограммуToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.сохранитьПрограммуToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьПрограммуToolStripMenuItem.Click += new System.EventHandler(this.saveAppToolStripMenuItem_Click);
+            // 
+            // открытьToolStripMenuItem
+            // 
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.openProgToolStripMenuItem_Click);
             // 
             // лентаToolStripMenuItem
             // 
@@ -357,15 +377,29 @@
             this.лентаToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.лентаToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.лентаToolStripMenuItem.Name = "лентаToolStripMenuItem";
-            this.лентаToolStripMenuItem.Size = new System.Drawing.Size(66, 25);
+            this.лентаToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
             this.лентаToolStripMenuItem.Text = "Лента";
+            // 
+            // saveStrip
+            // 
+            this.saveStrip.Name = "saveStrip";
+            this.saveStrip.Size = new System.Drawing.Size(169, 26);
+            this.saveStrip.Text = "Сохранить";
+            this.saveStrip.Click += new System.EventHandler(this.saveStrip_Click);
+            // 
+            // LoadStr
+            // 
+            this.LoadStr.Name = "LoadStr";
+            this.LoadStr.Size = new System.Drawing.Size(169, 26);
+            this.LoadStr.Text = "Загрузить";
+            this.LoadStr.Click += new System.EventHandler(this.loadStr_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutAppToolStripMenuItem});
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(30, 25);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(30, 26);
             this.toolStripMenuItem5.Text = "?";
             // 
             // aboutAppToolStripMenuItem
@@ -375,19 +409,26 @@
             this.aboutAppToolStripMenuItem.Text = "О приложении";
             this.aboutAppToolStripMenuItem.Click += new System.EventHandler(this.aboutAppToolStripMenuItem_Click);
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(67, 26);
+            this.exitToolStripMenuItem.Text = "Выйти";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 29);
+            this.splitter1.Location = new System.Drawing.Point(0, 30);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 544);
+            this.splitter1.Size = new System.Drawing.Size(3, 543);
             this.splitter1.TabIndex = 7;
             this.splitter1.TabStop = false;
             // 
             // splitter2
             // 
-            this.splitter2.Location = new System.Drawing.Point(3, 29);
+            this.splitter2.Location = new System.Drawing.Point(3, 30);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 544);
+            this.splitter2.Size = new System.Drawing.Size(3, 543);
             this.splitter2.TabIndex = 8;
             this.splitter2.TabStop = false;
             // 
@@ -483,38 +524,35 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Начать с ";
             // 
-            // сохранитьПрограммуToolStripMenuItem
+            // onSteps
             // 
-            this.сохранитьПрограммуToolStripMenuItem.Name = "сохранитьПрограммуToolStripMenuItem";
-            this.сохранитьПрограммуToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.сохранитьПрограммуToolStripMenuItem.Text = "Сохранить";
+            this.onSteps.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.onSteps.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.onSteps.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.onSteps.Location = new System.Drawing.Point(1148, 237);
+            this.onSteps.Name = "onSteps";
+            this.onSteps.Size = new System.Drawing.Size(99, 38);
+            this.onSteps.TabIndex = 16;
+            this.onSteps.Text = "По шагам";
+            this.onSteps.UseVisualStyleBackColor = false;
+            this.onSteps.Click += new System.EventHandler(this.onSteps_Click);
             // 
-            // открытьToolStripMenuItem
+            // currIndexT
             // 
-            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.currIndexT.AutoSize = true;
+            this.currIndexT.Location = new System.Drawing.Point(1128, 49);
+            this.currIndexT.Name = "currIndexT";
+            this.currIndexT.Size = new System.Drawing.Size(119, 16);
+            this.currIndexT.TabIndex = 17;
+            this.currIndexT.Text = "Текущий индекс: ";
             // 
-            // exitToolStripMenuItem
+            // currIndexLabel
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(67, 25);
-            this.exitToolStripMenuItem.Text = "Выйти";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // saveStrip
-            // 
-            this.saveStrip.Name = "saveStrip";
-            this.saveStrip.Size = new System.Drawing.Size(224, 26);
-            this.saveStrip.Text = "Сохранить";
-            this.saveStrip.Click += new System.EventHandler(this.saveStrip_Click);
-            // 
-            // LoadStr
-            // 
-            this.LoadStr.Name = "LoadStr";
-            this.LoadStr.Size = new System.Drawing.Size(224, 26);
-            this.LoadStr.Text = "Загрузить";
-            this.LoadStr.Click += new System.EventHandler(this.loadStr_Click);
+            this.currIndexLabel.AutoSize = true;
+            this.currIndexLabel.Location = new System.Drawing.Point(1253, 49);
+            this.currIndexLabel.Name = "currIndexLabel";
+            this.currIndexLabel.Size = new System.Drawing.Size(0, 16);
+            this.currIndexLabel.TabIndex = 18;
             // 
             // MachineTuring
             // 
@@ -522,6 +560,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1331, 573);
+            this.Controls.Add(this.currIndexLabel);
+            this.Controls.Add(this.currIndexT);
+            this.Controls.Add(this.onSteps);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.beginAlgorithm);
             this.Controls.Add(this.button2);
@@ -536,6 +577,7 @@
             this.Controls.Add(this.alphabet);
             this.Controls.Add(this.strip);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MachineTuring";
@@ -590,6 +632,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveStrip;
         private System.Windows.Forms.ToolStripMenuItem LoadStr;
+        private System.Windows.Forms.Button onSteps;
+        private System.Windows.Forms.Label currIndexT;
+        private System.Windows.Forms.Label currIndexLabel;
     }
 }
 
